@@ -3,7 +3,7 @@ import AnimalIcon from '../AnimalIcon'
 import MobileScreenLayout from '../layout/MobileScreenLayout'
 import { CHICKEN_STAGE_ICONS } from '../../data/chickenAssets'
 import { SCREENS, NEW_ANIMAL_COST, useGame } from '../../context/GameContext'
-import { isLegendary } from '../../data/legendaries'
+import { isLegendary, legendaryDay } from '../../data/legendaries'
 import { isImageIcon, resolveStageIcon } from '../../utils/animalIcon'
 
 // EGG_ANIMALS kept in sync with animalIcon.js
@@ -120,7 +120,7 @@ export default function ScreenCollection() {
   // Indice de déblocage selon le type d'animal (objectif clair pour l'enfant).
   const unlockHint = (key) =>
     isLegendary(key)
-      ? 'Reviens 7 jours de suite ! 🔥'
+      ? `Cadeau du jour ${legendaryDay(key)} — connecte-toi chaque jour ! 🎁`
       : `Fais grandir ton animal, puis prends-en un nouveau (${NEW_ANIMAL_COST} ⭐)`
 
   const handleCardClick = (key, animal) => {
@@ -194,7 +194,7 @@ export default function ScreenCollection() {
                   </span>
                   {!animal.unlocked && (
                     <span className="collection-hint">
-                      {isLegendary(key) ? '🔥 7 jours de suite' : `🥚 Nouvel animal (${NEW_ANIMAL_COST}⭐)`}
+                      {isLegendary(key) ? `🎁 Cadeau du jour ${legendaryDay(key)}` : `🥚 Nouvel animal (${NEW_ANIMAL_COST}⭐)`}
                     </span>
                   )}
 

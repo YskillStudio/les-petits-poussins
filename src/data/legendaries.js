@@ -20,6 +20,12 @@ export function isLegendary(key) {
   return LEGENDARY_KEYS.has(key)
 }
 
+// Jour du cycle (1..5) où ce légendaire est offert par le cadeau quotidien.
+export function legendaryDay(key) {
+  const i = LEGENDARIES.findIndex((l) => l.key === key)
+  return i === -1 ? null : i + 1
+}
+
 // Entrées de collection pour les légendaires (verrouillées au départ).
 export function createLegendaryCollectionEntries() {
   const out = {}
